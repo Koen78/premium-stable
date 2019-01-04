@@ -1,0 +1,94 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-horse-my-suffix-heading">Create or edit a Horse</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!horse.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="horse.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="horse.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_birthday">Birthday</label>
+                    <div class="input-group">
+                        <input id="field_birthday" type="text" class="form-control" name="birthday" ngbDatepicker  #birthdayDp="ngbDatepicker" [(ngModel)]="horse.birthday"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="birthdayDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descentFather">Descent Father</label>
+                    <input type="text" class="form-control" name="descentFather" id="field_descentFather"
+                        [(ngModel)]="horse.descentFather" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_descentMother">Descent Mother</label>
+                    <input type="text" class="form-control" name="descentMother" id="field_descentMother"
+                        [(ngModel)]="horse.descentMother" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_height">Height</label>
+                    <input type="text" class="form-control" name="height" id="field_height"
+                        [(ngModel)]="horse.height" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_comment">Comment</label>
+                    <input type="text" class="form-control" name="comment" id="field_comment"
+                        [(ngModel)]="horse.comment" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_stable">Stable</label>
+                    <select class="form-control" id="field_stable" name="stable" [(ngModel)]="horse.stableId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="stableOption.id" *ngFor="let stableOption of stables; trackBy: trackStableById">{{stableOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_levelDressage">Level Dressage</label>
+                    <select class="form-control" id="field_levelDressage" name="levelDressage" [(ngModel)]="horse.levelDressageId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="levelDressageOption.id" *ngFor="let levelDressageOption of leveldressages; trackBy: trackLevelDressageById">{{levelDressageOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_levelJumping">Level Jumping</label>
+                    <select class="form-control" id="field_levelJumping" name="levelJumping" [(ngModel)]="horse.levelJumpingId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="levelJumpingOption.id" *ngFor="let levelJumpingOption of leveljumpings; trackBy: trackLevelJumpingById">{{levelJumpingOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_gender">Gender</label>
+                    <select class="form-control" id="field_gender" name="gender" [(ngModel)]="horse.genderId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="genderOption.id" *ngFor="let genderOption of genders; trackBy: trackGenderById">{{genderOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_color">Color</label>
+                    <select class="form-control" id="field_color" name="color" [(ngModel)]="horse.colorId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="colorOption.id" *ngFor="let colorOption of colors; trackBy: trackColorById">{{colorOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

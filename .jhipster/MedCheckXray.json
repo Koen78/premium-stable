@@ -1,0 +1,32 @@
+{
+    "name": "MedCheckXray",
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "image",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "medCheck",
+            "otherEntityName": "medCheck",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190104122135",
+    "entityTableName": "med_check_xray",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

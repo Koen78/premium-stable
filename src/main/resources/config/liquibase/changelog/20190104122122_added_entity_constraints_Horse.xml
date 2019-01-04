@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Horse.
+    -->
+    <changeSet id="20190104122122-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="stable_id"
+                                 baseTableName="horse"
+                                 constraintName="fk_horse_stable_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="stable"/>
+
+        <addForeignKeyConstraint baseColumnNames="level_dressage_id"
+                                 baseTableName="horse"
+                                 constraintName="fk_horse_level_dressage_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="level_dressage"/>
+
+        <addForeignKeyConstraint baseColumnNames="level_jumping_id"
+                                 baseTableName="horse"
+                                 constraintName="fk_horse_level_jumping_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="level_jumping"/>
+
+        <addForeignKeyConstraint baseColumnNames="gender_id"
+                                 baseTableName="horse"
+                                 constraintName="fk_horse_gender_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="gender"/>
+
+        <addForeignKeyConstraint baseColumnNames="color_id"
+                                 baseTableName="horse"
+                                 constraintName="fk_horse_color_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="color"/>
+
+    </changeSet>
+</databaseChangeLog>

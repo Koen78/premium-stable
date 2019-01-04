@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-person-my-suffix-heading">Create or edit a Person</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!person.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="person.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="person.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_mobile">Mobile</label>
+                    <input type="text" class="form-control" name="mobile" id="field_mobile"
+                        [(ngModel)]="person.mobile" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                        [(ngModel)]="person.email" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_languageParam">Language Param</label>
+                    <select class="form-control" id="field_languageParam" name="languageParam" [(ngModel)]="person.languageParamId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="languageParamOption.id" *ngFor="let languageParamOption of languageparams; trackBy: trackLanguageParamById">{{languageParamOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_stables">Stables</label>
+                    <select class="form-control" id="field_stables" multiple name="stables" [(ngModel)]="person.stables">
+                        <option [ngValue]="getSelected(person.stables, stableOption)" *ngFor="let stableOption of stables; trackBy: trackStableById">{{stableOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_horses">Horses</label>
+                    <select class="form-control" id="field_horses" multiple name="horses" [(ngModel)]="person.horses">
+                        <option [ngValue]="getSelected(person.horses, horseOption)" *ngFor="let horseOption of horses; trackBy: trackHorseById">{{horseOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

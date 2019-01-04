@@ -1,0 +1,115 @@
+{
+    "name": "Horse",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "birthday",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "descentFather",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descentMother",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "height",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "comment",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "stable",
+            "otherEntityName": "stable",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "pictures",
+            "otherEntityName": "picture",
+            "otherEntityRelationshipName": "horse"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "videos",
+            "otherEntityName": "video",
+            "otherEntityRelationshipName": "horse"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "competitions",
+            "otherEntityName": "competition",
+            "otherEntityRelationshipName": "horse"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "medChecks",
+            "otherEntityName": "medCheck",
+            "otherEntityRelationshipName": "horse"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "levelJumpingHiss",
+            "otherEntityName": "levelJumpingHis",
+            "otherEntityRelationshipName": "horse"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "levelDressageHiss",
+            "otherEntityName": "levelDressageHis",
+            "otherEntityRelationshipName": "horse"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "levelDressage",
+            "otherEntityName": "levelDressage",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "levelJumping",
+            "otherEntityName": "levelJumping",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "gender",
+            "otherEntityName": "gender",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "color",
+            "otherEntityName": "color",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "owners",
+            "otherEntityName": "person",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "horses"
+        }
+    ],
+    "changelogDate": "20190104122122",
+    "javadoc": "Horse entity.\n@author Koen.",
+    "entityTableName": "horse",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

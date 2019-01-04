@@ -1,0 +1,31 @@
+{
+    "name": "MedCheckDet",
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "result",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "medCheck",
+            "otherEntityName": "medCheck",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190104122134",
+    "entityTableName": "med_check_det",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

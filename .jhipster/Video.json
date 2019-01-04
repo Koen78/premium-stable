@@ -1,0 +1,35 @@
+{
+    "name": "Video",
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "youTubeUrl",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "horse",
+            "otherEntityName": "horse",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190104122136",
+    "entityTableName": "video",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

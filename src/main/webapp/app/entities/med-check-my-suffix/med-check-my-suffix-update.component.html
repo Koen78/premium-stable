@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-med-check-my-suffix-heading">Create or edit a Med Check</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!medCheck.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="medCheck.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="medCheck.date"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_shortDescription">Short Description</label>
+                    <input type="text" class="form-control" name="shortDescription" id="field_shortDescription"
+                        [(ngModel)]="medCheck.shortDescription" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_resultDescription">Result Description</label>
+                    <input type="text" class="form-control" name="resultDescription" id="field_resultDescription"
+                        [(ngModel)]="medCheck.resultDescription" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pdf">Pdf</label>
+                    <div>
+                        <div *ngIf="medCheck.pdf" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(medCheck.pdfContentType, medCheck.pdf)">open</a><br>
+                            <span class="pull-left">{{medCheck.pdfContentType}}, {{byteSize(medCheck.pdf)}}</span>
+                            <button type="button" (click)="medCheck.pdf=null;medCheck.pdfContentType=null;"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_pdf" (change)="setFileData($event, medCheck, 'pdf', false)"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="pdf" id="field_pdf"
+                        [(ngModel)]="medCheck.pdf" />
+                    <input type="hidden" class="form-control" name="pdfContentType" id="field_pdfContentType"
+                        [(ngModel)]="medCheck.pdfContentType" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_horse">Horse</label>
+                    <select class="form-control" id="field_horse" name="horse" [(ngModel)]="medCheck.horseId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="horseOption.id" *ngFor="let horseOption of horses; trackBy: trackHorseById">{{horseOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

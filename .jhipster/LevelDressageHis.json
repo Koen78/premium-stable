@@ -1,0 +1,34 @@
+{
+    "name": "LevelDressageHis",
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "horse",
+            "otherEntityName": "horse",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "levelDressage",
+            "otherEntityName": "levelDressage",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190104122127",
+    "javadoc": "Race LevelDressuurHis.\n@author Koen.",
+    "entityTableName": "level_dressage_his",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

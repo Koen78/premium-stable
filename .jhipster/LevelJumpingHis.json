@@ -1,0 +1,34 @@
+{
+    "name": "LevelJumpingHis",
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "horse",
+            "otherEntityName": "horse",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "levelJumping",
+            "otherEntityName": "levelJumping",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190104122130",
+    "javadoc": "Race LevelJumpingHis.\n@author Koen.",
+    "entityTableName": "level_jumping_his",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

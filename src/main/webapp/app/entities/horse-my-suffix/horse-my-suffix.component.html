@@ -1,0 +1,117 @@
+<div>
+    <h2 id="page-heading">
+        <span>Horses</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-horse-my-suffix" [routerLink]="['/horse-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down" >
+            Create new Horse
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="horses">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span>Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="birthday"><span>Birthday</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="descentFather"><span>Descent Father</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="descentMother"><span>Descent Mother</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="height"><span>Height</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="comment"><span>Comment</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="stableId"><span>Stable</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="levelDressageId"><span>Level Dressage</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="levelJumpingId"><span>Level Jumping</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="genderId"><span>Gender</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="colorId"><span>Color</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let horse of horses ;trackBy: trackId">
+                <td><a [routerLink]="['/horse-my-suffix', horse.id, 'view' ]">{{horse.id}}</a></td>
+                <td>{{horse.name}}</td>
+                <td>{{horse.birthday | date:'mediumDate'}}</td>
+                <td>{{horse.descentFather}}</td>
+                <td>{{horse.descentMother}}</td>
+                <td>{{horse.height}}</td>
+                <td>{{horse.comment}}</td>
+                <td>
+                    <div *ngIf="horse.stableId">
+                        <a [routerLink]="['../stable-my-suffix', horse.stableId , 'view' ]" >{{horse.stableId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="horse.levelDressageId">
+                        <a [routerLink]="['../level-dressage-my-suffix', horse.levelDressageId , 'view' ]" >{{horse.levelDressageId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="horse.levelJumpingId">
+                        <a [routerLink]="['../level-jumping-my-suffix', horse.levelJumpingId , 'view' ]" >{{horse.levelJumpingId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="horse.genderId">
+                        <a [routerLink]="['../gender-my-suffix', horse.genderId , 'view' ]" >{{horse.genderId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="horse.colorId">
+                        <a [routerLink]="['../color-my-suffix', horse.colorId , 'view' ]" >{{horse.colorId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/horse-my-suffix', horse.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/horse-my-suffix', horse.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'horse-my-suffix/'+ horse.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="horses && horses.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

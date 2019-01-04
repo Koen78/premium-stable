@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span>Med Check Dets</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-med-check-det-my-suffix" [routerLink]="['/med-check-det-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down" >
+            Create new Med Check Det
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="medCheckDets">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Code</span></th>
+            <th><span>Result</span></th>
+            <th><span>Med Check</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let medCheckDet of medCheckDets ;trackBy: trackId">
+                <td><a [routerLink]="['/med-check-det-my-suffix', medCheckDet.id, 'view' ]">{{medCheckDet.id}}</a></td>
+                <td>{{medCheckDet.code}}</td>
+                <td>{{medCheckDet.result}}</td>
+                <td>
+                    <div *ngIf="medCheckDet.medCheckId">
+                        <a [routerLink]="['../med-check-my-suffix', medCheckDet.medCheckId , 'view' ]" >{{medCheckDet.medCheckId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/med-check-det-my-suffix', medCheckDet.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/med-check-det-my-suffix', medCheckDet.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'med-check-det-my-suffix/'+ medCheckDet.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+{
+    "name": "LevelDressage",
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190104122125",
+    "javadoc": "Race LevelDressuur.\n@author Koen.",
+    "entityTableName": "level_dressage",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

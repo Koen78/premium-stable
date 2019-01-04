@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="stable">
+            <h2><span>Stable</span> {{stable.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{stable.description}}</span>
+                </dd>
+                <dt><span>Street</span></dt>
+                <dd>
+                    <span>{{stable.street}}</span>
+                </dd>
+                <dt><span>House Number</span></dt>
+                <dd>
+                    <span>{{stable.houseNumber}}</span>
+                </dd>
+                <dt><span>Postalcode</span></dt>
+                <dd>
+                    <span>{{stable.postalcode}}</span>
+                </dd>
+                <dt><span>City</span></dt>
+                <dd>
+                    <span>{{stable.city}}</span>
+                </dd>
+                <dt><span>Country</span></dt>
+                <dd>
+                    <div *ngIf="stable.countryId">
+                        <a [routerLink]="['/country-my-suffix', stable.countryId, 'view']">{{stable.countryId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/stable-my-suffix', stable.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

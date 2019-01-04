@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="competition">
+            <h2><span>Competition</span> {{competition.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Date</span></dt>
+                <dd>
+                    <span>{{competition.date}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{competition.description}}</span>
+                </dd>
+                <dt><span>Result</span></dt>
+                <dd>
+                    <span>{{competition.result}}</span>
+                </dd>
+                <dt><span>Horse</span></dt>
+                <dd>
+                    <div *ngIf="competition.horseId">
+                        <a [routerLink]="['/horse-my-suffix', competition.horseId, 'view']">{{competition.horseId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Race</span></dt>
+                <dd>
+                    <div *ngIf="competition.raceId">
+                        <a [routerLink]="['/race-my-suffix', competition.raceId, 'view']">{{competition.raceId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/competition-my-suffix', competition.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

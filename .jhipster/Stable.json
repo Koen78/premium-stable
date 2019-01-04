@@ -1,0 +1,57 @@
+{
+    "name": "Stable",
+    "fields": [
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "street",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "houseNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "postalcode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "city",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "horses",
+            "otherEntityName": "horse",
+            "otherEntityRelationshipName": "stable"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "owners",
+            "otherEntityName": "person",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "stables"
+        }
+    ],
+    "changelogDate": "20190104122120",
+    "javadoc": "Stable entity.\n@author Koen.",
+    "entityTableName": "stable",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}

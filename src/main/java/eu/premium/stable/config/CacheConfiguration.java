@@ -41,6 +41,38 @@ public class CacheConfiguration {
             cm.createCache(eu.premium.stable.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(eu.premium.stable.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(eu.premium.stable.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Person.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Person.class.getName() + ".stables", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Person.class.getName() + ".horses", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Stable.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Stable.class.getName() + ".horses", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Stable.class.getName() + ".owners", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Country.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Horse.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Horse.class.getName() + ".pictures", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Horse.class.getName() + ".videos", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Horse.class.getName() + ".competitions", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Horse.class.getName() + ".medChecks", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Horse.class.getName() + ".levelJumpingHisses", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Horse.class.getName() + ".levelDressageHisses", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Horse.class.getName() + ".owners", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.EquineSpecies.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Race.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.LevelDressage.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.LevelJumping.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.LevelDressageHis.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Gender.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Color.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.LevelJumpingHis.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.LanguageParam.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Picture.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.MedCheck.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.MedCheck.class.getName() + ".details", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.MedCheck.class.getName() + ".xrays", jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.MedCheckDet.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.MedCheckXray.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Video.class.getName(), jcacheConfiguration);
+            cm.createCache(eu.premium.stable.domain.Competition.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

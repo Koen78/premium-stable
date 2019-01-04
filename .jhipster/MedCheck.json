@@ -1,0 +1,52 @@
+{
+    "name": "MedCheck",
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "shortDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "resultDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pdf",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "horse",
+            "otherEntityName": "horse",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "details",
+            "otherEntityName": "medCheckDet",
+            "otherEntityRelationshipName": "medCheck"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "xrays",
+            "otherEntityName": "medCheckXray",
+            "otherEntityRelationshipName": "medCheck"
+        }
+    ],
+    "changelogDate": "20190104122133",
+    "entityTableName": "med_check",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "mySuffix"
+}
