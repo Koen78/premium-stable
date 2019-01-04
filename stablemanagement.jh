@@ -1,0 +1,151 @@
+/**
+* Person entity.
+ * @author Koen.
+ */
+ entity Person {
+ 	name String,
+    mobile String,
+    email String
+ }
+/**
+* Stable entity.
+ * @author Koen.
+ */ 
+ entity Stable {
+ 	description String,
+    street String, 
+    houseNumber String,
+    postalcode String,
+    city String
+ }
+ entity Country {
+ 	description String
+ }
+/**
+* Horse entity.
+ * @author Koen.
+ */
+entity Horse  {
+	name String,
+    birthday LocalDate,
+    descentFather String,
+    descentMother String,
+    height String,
+    comment String
+}
+entity EquineSpecies {
+	description String    
+}
+/**
+* Race entity.
+ * @author Koen.
+ */
+entity Race {
+	description String,
+    date LocalDate
+}
+/**
+* Race LevelDressuur.
+ * @author Koen.
+ */
+entity LevelDressage {
+	description String
+}
+/**
+* Race LevelJumping.
+ * @author Koen.
+ */
+entity LevelJumping {
+	description String
+}
+/**
+* Race LevelDressuurHis.
+ * @author Koen.
+ */
+entity LevelDressageHis {
+	date LocalDate
+}
+entity Gender {
+	gender String
+}
+entity Color {
+	color String
+}
+/**
+* Race LevelJumpingHis.
+ * @author Koen.
+ */
+entity LevelJumpingHis {
+	date LocalDate
+}
+entity LanguageParam {
+	description String
+}
+entity Picture {
+	date LocalDate,
+	description String,
+    image ImageBlob
+}
+entity MedCheck {
+	date LocalDate,
+    shortDescription String,
+    resultDescription String,
+    pdf AnyBlob
+}
+entity MedCheckDet {
+	code String,
+    result String
+}
+entity MedCheckXray {
+	description String,
+    image ImageBlob
+}
+entity Video {
+	date LocalDate,
+	description String,
+    youTubeUrl String
+}
+entity Competition {
+	date LocalDate,
+    description String, 
+    result String
+}
+
+relationship ManyToOne {
+    Horse{levelDressage} to LevelDressage,
+    Horse{levelJumping} to LevelJumping,
+    Person{languageParam} to LanguageParam,
+    Horse{gender} to Gender,
+    Horse{color} to Color,
+    LevelDressageHis{levelDressage} to LevelDressage,
+    LevelJumpingHis{levelJumping} to LevelJumping,
+    Stable{country} to Country,
+    Race{country} to Country,
+    Competition{race} to Race
+}
+
+relationship OneToMany {
+	Stable{horses} to Horse,
+    Horse{pictures} to Picture,
+    Horse{videos} to Video,
+    Horse{competitions} to Competition,
+    Horse{medChecks} to MedCheck,
+    MedCheck{details} to MedCheckDet,
+    MedCheck{xrays} to MedCheckXray,
+    Horse{levelJumpingHiss} to LevelJumpingHis,
+    Horse{levelDressageHiss} to LevelDressageHis
+}
+relationship ManyToMany {
+	Person{stables} to Stable{owners},
+    Person{horses} to Horse{owners}
+}
+
+// Set pagination options
+paginate Person, Horse, Stable with pagination
+
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl 
+// Set an angular suffix
+angularSuffix * with mySuffix
