@@ -1,0 +1,43 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "gitCompany": "",
+    "baseName": "premiumStable",
+    "packageName": "eu.premium.stable",
+    "packageFolder": "eu/premium/stable",
+    "serverPort": 8080,
+    "serviceDiscoveryType": "eureka",
+    "authenticationType": "jwt",
+    "uaaBaseName": "../uaa",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "enableSwaggerCodegen": false,
+    "messageBroker": "kafka",
+    "buildTool": "gradle",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [
+      "gatling",
+      "cucumber",
+      "protractor"
+    ],
+    "enableTranslation": false,
+    "nativeLanguage": "en",
+    "languages": [
+      "en"
+    ],
+    "clientFramework": "angularX",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "5.7.2",
+    "jwtSecretKey": "OTZkYjI3OWI0NGYwODQ5YjZiM2FiZTM3M2I1MDZjMjU0YzQwOGE1NTQ4YTI1ODBkYWFmMTAyY2NlYjNjYWRhYTI2MTc0Mjk0ZmJjZjg0MGQ2YzRjZjcyYTA2ZmZkYTBkNGU1YWMyM2IwOGU1OTAwODExYmUwMmEzZjQ3NjAyMWY=",
+    "otherModules": []
+  },
+  "git-provider": "GitHub",
+  "git-company": "Koen78",
+  "repository-name": "premium-stable"
+}
