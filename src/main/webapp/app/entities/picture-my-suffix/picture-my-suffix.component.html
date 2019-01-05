@@ -1,0 +1,84 @@
+<div>
+    <h2 id="page-heading">
+        <span>Pictures</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-picture-my-suffix" [routerLink]="['/picture-my-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down" >
+            Create new Picture
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="pictures">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Date</span></th>
+            <th><span>Description</span></th>
+            <th><span>Image</span></th>
+            <th><span>Horse</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let picture of pictures ;trackBy: trackId">
+                <td><a [routerLink]="['/picture-my-suffix', picture.id, 'view' ]">{{picture.id}}</a></td>
+                <td>{{picture.date | date:'mediumDate'}}</td>
+                <td>{{picture.description}}</td>
+                <td>
+                    <a *ngIf="picture.image" (click)="openFile(picture.imageContentType, picture.image)">
+                        <img [src]="'data:' + picture.imageContentType + ';base64,' + picture.image" style="max-height: 30px;" alt="picture image"/>
+                    </a>
+                    <span *ngIf="picture.image">{{picture.imageContentType}}, {{byteSize(picture.image)}}</span>
+                </td>
+                <td>
+                    <div *ngIf="picture.horseId">
+                        <a [routerLink]="['../horse-my-suffix', picture.horseId , 'view' ]" >{{picture.horseId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/picture-my-suffix', picture.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/picture-my-suffix', picture.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'picture-my-suffix/'+ picture.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

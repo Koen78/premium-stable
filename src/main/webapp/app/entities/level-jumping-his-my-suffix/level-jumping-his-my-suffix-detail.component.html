@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="levelJumpingHis">
+            <h2><span>Level Jumping His</span> {{levelJumpingHis.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Date</span></dt>
+                <dd>
+                    <span>{{levelJumpingHis.date}}</span>
+                </dd>
+                <dt><span>Horse</span></dt>
+                <dd>
+                    <div *ngIf="levelJumpingHis.horseId">
+                        <a [routerLink]="['/horse-my-suffix', levelJumpingHis.horseId, 'view']">{{levelJumpingHis.horseId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Level Jumping</span></dt>
+                <dd>
+                    <div *ngIf="levelJumpingHis.levelJumpingId">
+                        <a [routerLink]="['/level-jumping-my-suffix', levelJumpingHis.levelJumpingId, 'view']">{{levelJumpingHis.levelJumpingId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/level-jumping-his-my-suffix', levelJumpingHis.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

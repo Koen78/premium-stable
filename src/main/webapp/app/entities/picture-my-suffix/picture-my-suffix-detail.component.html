@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="picture">
+            <h2><span>Picture</span> {{picture.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Date</span></dt>
+                <dd>
+                    <span>{{picture.date}}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{picture.description}}</span>
+                </dd>
+                <dt><span>Image</span></dt>
+                <dd>
+                    <div *ngIf="picture.image">
+                        <a (click)="openFile(picture.imageContentType, picture.image)">
+                            <img [src]="'data:' + picture.imageContentType + ';base64,' + picture.image" style="max-width: 100%;" alt="picture image"/>
+                        </a>
+                        {{picture.imageContentType}}, {{byteSize(picture.image)}}
+                    </div>
+                </dd>
+                <dt><span>Horse</span></dt>
+                <dd>
+                    <div *ngIf="picture.horseId">
+                        <a [routerLink]="['/horse-my-suffix', picture.horseId, 'view']">{{picture.horseId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/picture-my-suffix', picture.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

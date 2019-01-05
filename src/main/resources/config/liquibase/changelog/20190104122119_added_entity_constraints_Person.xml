@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Person.
+    -->
+    <changeSet id="20190104122119-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="language_param_id"
+                                 baseTableName="person"
+                                 constraintName="fk_person_language_param_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="language_param"/>
+
+        <addForeignKeyConstraint baseColumnNames="people_id"
+                                 baseTableName="person_stables"
+                                 constraintName="fk_person_stables_people_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+        <addForeignKeyConstraint baseColumnNames="stables_id"
+                                 baseTableName="person_stables"
+                                 constraintName="fk_person_stables_stables_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="stable"/>
+        
+        <addForeignKeyConstraint baseColumnNames="people_id"
+                                 baseTableName="person_horses"
+                                 constraintName="fk_person_horses_people_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="person"/>
+        <addForeignKeyConstraint baseColumnNames="horses_id"
+                                 baseTableName="person_horses"
+                                 constraintName="fk_person_horses_horses_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="horse"/>
+        
+    </changeSet>
+</databaseChangeLog>

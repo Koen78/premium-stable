@@ -5,6 +5,37 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122119_added_entity_Person.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122120_added_entity_Stable.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122121_added_entity_Country.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122122_added_entity_Horse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122123_added_entity_EquineSpecies.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122124_added_entity_Race.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122125_added_entity_LevelDressage.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122126_added_entity_LevelJumping.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122127_added_entity_LevelDressageHis.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122128_added_entity_Gender.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122129_added_entity_Color.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122130_added_entity_LevelJumpingHis.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122131_added_entity_LanguageParam.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122132_added_entity_Picture.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122133_added_entity_MedCheck.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122134_added_entity_MedCheckDet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122135_added_entity_MedCheckXray.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122136_added_entity_Video.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122137_added_entity_Competition.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190104122119_added_entity_constraints_Person.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122120_added_entity_constraints_Stable.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122122_added_entity_constraints_Horse.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122124_added_entity_constraints_Race.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122127_added_entity_constraints_LevelDressageHis.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122130_added_entity_constraints_LevelJumpingHis.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122132_added_entity_constraints_Picture.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122133_added_entity_constraints_MedCheck.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122134_added_entity_constraints_MedCheckDet.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122135_added_entity_constraints_MedCheckXray.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122136_added_entity_constraints_Video.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190104122137_added_entity_constraints_Competition.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="levelDressageHis">
+            <h2><span>Level Dressage His</span> {{levelDressageHis.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Date</span></dt>
+                <dd>
+                    <span>{{levelDressageHis.date}}</span>
+                </dd>
+                <dt><span>Horse</span></dt>
+                <dd>
+                    <div *ngIf="levelDressageHis.horseId">
+                        <a [routerLink]="['/horse-my-suffix', levelDressageHis.horseId, 'view']">{{levelDressageHis.horseId}}</a>
+                    </div>
+                </dd>
+                <dt><span>Level Dressage</span></dt>
+                <dd>
+                    <div *ngIf="levelDressageHis.levelDressageId">
+                        <a [routerLink]="['/level-dressage-my-suffix', levelDressageHis.levelDressageId, 'view']">{{levelDressageHis.levelDressageId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/level-dressage-his-my-suffix', levelDressageHis.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

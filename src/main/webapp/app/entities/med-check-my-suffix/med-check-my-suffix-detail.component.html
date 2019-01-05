@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="medCheck">
+            <h2><span>Med Check</span> {{medCheck.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Date</span></dt>
+                <dd>
+                    <span>{{medCheck.date}}</span>
+                </dd>
+                <dt><span>Short Description</span></dt>
+                <dd>
+                    <span>{{medCheck.shortDescription}}</span>
+                </dd>
+                <dt><span>Result Description</span></dt>
+                <dd>
+                    <span>{{medCheck.resultDescription}}</span>
+                </dd>
+                <dt><span>Pdf</span></dt>
+                <dd>
+                    <div *ngIf="medCheck.pdf">
+                        <a (click)="openFile(medCheck.pdfContentType, medCheck.pdf)">open</a>
+                        {{medCheck.pdfContentType}}, {{byteSize(medCheck.pdf)}}
+                    </div>
+                </dd>
+                <dt><span>Horse</span></dt>
+                <dd>
+                    <div *ngIf="medCheck.horseId">
+                        <a [routerLink]="['/horse-my-suffix', medCheck.horseId, 'view']">{{medCheck.horseId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/med-check-my-suffix', medCheck.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
